@@ -17,4 +17,4 @@ class Libro:
     def info(self):
         return f"[{self.estado()}] - {self.nombre} | Autor: {self.autor} | ISBN: {self.isbn}"
     
-
+# primer avance del proyecto
