@@ -18,3 +18,25 @@ class Libro:
         return f"[{self.estado()}] - {self.nombre} | Autor: {self.autor} | ISBN: {self.isbn}"
     
 # primer avance del proyecto
+
+class Biblioteca:
+
+#definimos los tipos de listas, pilas y colas que itulizaremos en el programa
+    def __init__(self):
+        self.libros = []  # Lista de los libros disponibles
+        self.librosPrestados = deque()  # Cola de libros que son prestados
+        self.librosDevueltos = []  # Pila de los libros que son devueltos
+
+#Definimos la funcion para agregar libros
+    def agregarLibro(self, nombre, autor, isbn):
+        for libro in self.libros + list(self.librosPrestados):
+            if libro.isbn == isbn:
+                print(" \n -- El libro que intenta ingresar ya existe en la biblioteca.")# si el isbn es repetido, no permitira agregar
+                print("\n" * 2)
+                return
+        nuevoLibro = Libro(nombre, autor, isbn)
+        self.libros.append(nuevoLibro)
+        print(f" \n -- El libro '{nombre}' fue agregado exitosamente a la biblioteca el '{hora}.")
+        print("\n" * 2)
+
+# Segundo avance del proyecto
