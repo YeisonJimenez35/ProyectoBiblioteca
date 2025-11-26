@@ -40,3 +40,35 @@ class Biblioteca:
         print("\n" * 2)
 
 # Segundo avance del proyecto
+
+#definimos la funcion prestar libros
+    def prestarLibro(self, clave, persona):
+        for libro in self.libros:
+            if (libro.isbn.lower() == clave.lower() or libro.nombre.lower() == clave.lower()) and not libro.prestado:
+                libro.prestado = True
+                libro.prestado_a = persona
+                self.libros.remove(libro)
+                self.librosPrestados.append(libro)
+                print(f"\n  -- El libro '{libro.nombre}' ha sido prestado a {persona} ' el ' {hora}.")
+                print("\n" * 2)
+#si el libro no se encuentra en la lista por estar prestado o mal escrito la busqueda
+                return
+        print("\n  -- El libro que busca no se encuentra o ya fue prestado con anterioridad.")
+        print("\n" * 2)
+
+#definimos la funcion devolver
+    def devolverLibro(self, clave):
+        for libro in self.librosPrestados:
+            if libro.isbn.lower() == clave.lower() or libro.nombre.lower() == clave.lower():
+                persona = libro.prestado_a
+                libro.prestado = False
+                libro.prestado_a = None
+                self.librosPrestados.remove(libro)
+                self.librosDevueltos.append(libro)
+                self.libros.append(libro)
+                print(f"\n  -- El libro '{libro.nombre}' fue devuelto el ' {hora} 'por el usuario' {persona}.")
+                return
+        print("\n  -- El libro que busca, no se encuentra en la biblioteca de libros prestados.")
+        print("\n" * 2)
+
+# tercer avance del proyecto
