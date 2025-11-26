@@ -143,3 +143,67 @@ class Biblioteca:
                 return
         print("  -- El libro no se encuentra o está prestado (no se puede modificar los datos).")
         print("\n" * 2)
+
+# cuarto avance
+
+def menu():
+    biblioteca = Biblioteca()
+
+    while True:
+        print("----- MENÚ DE LA APLICACION BIBLIOTECA -----")
+        print("\n*--Recuerd utilizar letras siempre en mayuscula para evitar errores en busqueda--*")
+        print("\n 1. Agregar nuevo libro")
+        print(" 2. Prestar libro de la biblioteca")
+        print(" 3. Devolver un libro a la biblioteca")
+        print(" 4. Mostrar la biblioteca entera y estado de los libros")
+        print(" 5. Buscar un libro en la biblioteca")
+        print(" 6. Eliminar un libro de la biblioteca")
+        print(" 7. Modificar datos de un libro guardado")
+        print(" 8. Salir del sistema")
+
+        opcion = input("Selecciona una opción: ")
+
+        if opcion == "1":
+            nombre = input("Nombre del libro: ")
+            autor = input("Autor: ")
+            isbn = input("ISBN: ")
+            biblioteca.agregarLibro(nombre, autor, isbn)
+
+        elif opcion == "2":
+            clave = input("ISBN o nombre del libro a prestar: ")
+            persona = input("Nombre de la persona: ")
+            biblioteca.prestarLibro(clave, persona)
+
+        elif opcion == "3":
+            clave = input("ISBN o nombre del libro a devolver: ")
+            biblioteca.devolverLibro(clave)
+
+        elif opcion == "4":
+            biblioteca.mostrarLaBiblioteca()
+
+        elif opcion == "5":
+            clave = input("Ingresa ISBN, nombre o autor para buscar: ")
+            biblioteca.buscarLibro(clave)
+
+        elif opcion == "6":
+            clave = input("ISBN o nombre del libro a eliminar: ")
+            biblioteca.eliminarLibro(clave)
+
+        elif opcion == "7":
+            clave = input("ISBN o nombre del libro a modificar: ")
+            biblioteca.modificarLibro(clave)
+
+        elif opcion == "8":
+            print("¡Hasta pronto!")
+            break
+
+        else:
+            print("\n  --Opción no válida. Introduce una de las opciones del menu.")
+            print("\n" * 2)
+
+
+# Ejecutar el programa
+if __name__ == "__main__":
+    menu()
+
+# avance final.
